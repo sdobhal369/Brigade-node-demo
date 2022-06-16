@@ -4,6 +4,10 @@ const { events, Job, Group } = require("brigadier");
 
 events.on("exec", (e,project) => {
 
+// Shared Storage for all Jobs
+
+  var dest = "/mnt/brigade/share"
+
 // Job for Installing Application Dependency
   
   var build = new Job("Dependency-Installation");
@@ -51,6 +55,11 @@ events.on("exec", (e,project) => {
     "kubectl apply -f deploy.yaml"                              // Apply the newly created deploy.yaml file
   
   ];
+  
+  build.storage.enabled = true
+  dockerPack.storage.enabled = true
+  deploy.storage.enabled = true
+  
   
   Group.runEach([build, dockerPack, deploy]);
 
