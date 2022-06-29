@@ -1,6 +1,5 @@
-From node:9-slim
-
+From node:14-alpine
 WORKDIR /app
 COPY . /app
 RUN npm install
-CMD ["npm", "build"]
+CMD ["npm", "start"]
