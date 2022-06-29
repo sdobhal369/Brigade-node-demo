@@ -2,7 +2,7 @@ const { events, Job } = require("brigadier");
 events.on("exec", (e,project) => {
   
   var build = new Job("building-stage");
-  build.image = "node:9-slim";
+  build.image = "node:14-alpine";
   build.tasks = [
     "cd /src",
     "npm install",
